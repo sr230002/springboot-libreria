@@ -8,6 +8,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -32,8 +34,9 @@ public class Editorial {
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
     
-    @Column(name = "pais", length = 50)
-    private String pais;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pais_id", referencedColumnName = "pais_id", nullable = false)
+    private Pais pais;
     
     @OneToMany(mappedBy = "editorial", fetch = FetchType.LAZY)
     private List<Libro> libros = new ArrayList<>();

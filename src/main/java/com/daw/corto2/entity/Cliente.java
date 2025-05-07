@@ -37,6 +37,9 @@ public class Cliente {
     
     @Column(name = "email", nullable = false, length = 100, unique = true)
     private String email;
+
+    @Column(name = "telefono", nullable = false, length = 12)
+    private String telefono;
     
     @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
     private List<Venta> ventas = new ArrayList<>();

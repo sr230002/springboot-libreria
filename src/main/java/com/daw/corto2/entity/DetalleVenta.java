@@ -30,11 +30,17 @@ public class DetalleVenta {
     @Column(name = "detalle_venta_id", nullable = false)
     private Long detalleVentaID;
 
+    @Column(name = "descripcion", length = 500)
+    private String descripcion;
+
     @Column(name = "cantidad", nullable = false)
     private Integer cantidad;
 
     @Column(name = "precio_unitario", precision = 10, scale = 2)
     private BigDecimal precioUnitario;
+
+    @Column(name = "total_linea", precision = 10, scale = 2)
+    private BigDecimal totalLinea;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "libro_id", referencedColumnName = "libro_id", nullable = false)

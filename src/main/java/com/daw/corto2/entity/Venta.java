@@ -35,11 +35,20 @@ public class Venta {
     @Column(name = "venta_id", nullable = false)
     private Long ventaID;
 
+    @Column(name = "fecha_creacion", nullable = false)
+    private LocalDateTime fechaCreacion;
+
     @Column(name = "fecha_venta", nullable = false)
     private LocalDateTime fechaVenta;
 
+    @Column(name = "sub_total", precision = 10, scale = 2)
+    private BigDecimal subTotal;
+
     @Column(name = "total", precision = 10, scale = 2)
     private BigDecimal total;
+
+    @Column(name = "informacion_adicional", length = 500)
+    private String informacionAdicional;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id", referencedColumnName = "cliente_id", nullable = false)
